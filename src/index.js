@@ -27,4 +27,7 @@ app.set("port" , process.env.PORT || 3000 )
 
 
 /* ------------------------------- run server ------------------------------- */
+app.listen(app.get("port"), () => {
+    console.log("Server listeing on port" , app.get("port")) ;
 
+} );
