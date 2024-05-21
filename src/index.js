@@ -35,12 +35,12 @@ app.use(express.json());
 /* --------------------------------- routes --------------------------------- */
 
 app.get("/", (req, res) => {
-    res.json({"message": "Hola Mundo"})
+    res.render("index")
 });
 
 /* ------------------------------ Public filess ----------------------------- */
 
-app.unsubscribe(express.static(join(__dirname, "public")));
+app.use(express.static(join(__dirname, "public")));
 
 /* ------------------------------- run server ------------------------------- */
 
