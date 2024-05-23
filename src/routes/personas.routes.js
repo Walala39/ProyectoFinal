@@ -3,6 +3,22 @@ import pool from "../database.js"
 
 const router = Router();
 
+router.get("/add" , (req, res) => {
+    res.render("personas/add")
+});
+
+router.post("/add", async(req, res) => {
+try {
+    const { name, lastname, age} =req.body
+    const newPersona = { 
+        name, lastname, age
+    }
+    await pool.query('INSERT INTO personas SET ?', [newPersona]);
+        res.redirect('/list');
+} catch (error) {
+    res.status(500).json({message: error.message});
+}
+});
 
 router.get("/list", async(req, res) => {
     try {
@@ -10,6 +26,16 @@ router.get("/list", async(req, res) => {
         res.render("personas/list", {personas: result})
     } catch (error) {
         res.status(500).json({message: error.message});
+    }
+});
+
+router.get('/delete/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        await pool.query('DELETE FROM personas WHERE id = ?', [id]);
+        res.redirect('/list');
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
