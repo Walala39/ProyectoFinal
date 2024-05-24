@@ -53,9 +53,13 @@ router.post('/edit/:id', async (req, res) => {
     try {
         const { id } = req.params
         const {name, lastname, age} = req.body
-        const editPersonas = {name, lastname, age}
+        const editPersona = {
+                                name, 
+                                lastname, 
+                                age
+                            }
         await pool.query("UPDATE personas SET ? WHERE id = ?", [editPersona, id]);
-        res.render("/list");
+        res.redirect("/list");
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
