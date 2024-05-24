@@ -39,4 +39,29 @@ router.get('/delete/:id', async (req, res) => {
     }
 });
 
-export default router;
+router.get('/edit/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const [persona] = await pool.query("SELECT * FROM personas WHERE id = ?", [id]);
+        const personaEdit = persona[0]
+        res.render("personas/edit", { persona: personaEdit })
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+router.post('/edit/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const {name, lastname, age} = req.body
+        const editPersonas = {name, lastname, age}
+        await pool.query("UPDATE personas SET ? WHERE id = ?", [editPersona, id]);
+        res.render("/list");
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+
+
+export default router;  
