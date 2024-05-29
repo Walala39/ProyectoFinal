@@ -1,23 +1,32 @@
 import {Router} from "express"
 import pool from "../database.js"
 
+
 const router = Router();
 
 router.get("/add" , (req, res) => {
     res.render("personas/add")
 });
 
-router.post("/add", async(req, res) => {
-try {
-    const { name, lastname, age, observacion} =req.body
-    const newPersona = { 
-        name, lastname, age, observacion
-    }
-    await pool.query('INSERT INTO personas SET ?', [newPersona]);
+router.get("/quienes-somos", (req, res) => {
+    res.render("quienes_somos");
+});
+
+router.post("/add", async (req, res) => {
+    try {
+        const { name, lastname, age, observacion, imagen } = req.body;
+        const newPersona = {
+            name,
+            lastname,
+            age,
+            observacion,
+            imagen: req.file ? req.file.uploads : null 
+        };
+        await pool.query('INSERT INTO personas SET ?', [newPersona]);
         res.redirect('/list');
-} catch (error) {
-    res.status(500).json({message: error.message});
-}
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 });
 
 router.get("/list", async(req, res) => {
