@@ -23,7 +23,21 @@
                         <td> {{lastname}} </td>
                         <td> {{age}} </td>
                         <td> {{observacion}} </td>
-                        <td> {{imagen}} </td>
+                        <style>
+                           #estilo-imagen img {
+                            width:50px; 
+                            height:50px;
+                            border-radius: 3%;
+                            transition: 1s;
+                            object-fit: cover;
+                            }                   
+
+                            #estilo-imagen img:hover {
+                            transform: scale(2.10);
+                            } 
+                        </style>
+                        <td id="estilo-imagen"> <img src="/uploads/{{imagen}}" class="d-inline-block align-top" alt="Logo">
+                        </td>
                          <td> 
                             <div class="btn-group">
                                 <a href="/edit/{{id}}" class="btn btn-warning p-2">

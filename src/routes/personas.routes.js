@@ -7,9 +7,14 @@ const router = Router();
 router.get("/add", (req, res) => {
   res.render("personas/add");
 });
-
 router.get("/quienes-somos", (req, res) => {
-  res.render("quienes_somos");
+  res.render("quienes-somos");
+});
+router.get("/vision", (req, res) => {
+  res.render("vision");
+});
+router.get("/mision", (req, res) => {
+  res.render("mision");
 });
 
 /* router.post("/add", upload.any(), async (req, res) => {
@@ -32,7 +37,7 @@ router.get("/quienes-somos", (req, res) => {
 router.get("/list", async (req, res) => {
   try {
     const [result] = await pool.query("SELECT * FROM personas");
-    res.render("personas/list", { personas: result });
+    res.render("personas/list", { personas: result});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
