@@ -1,0 +1,43 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="text-uppercase"> Editar Persona</h3>
+                </div>
+                    <div class="card-body">
+                        <form action="/edit/{{persona.id}}" method="post">
+
+                        <div class="input-group mt-2">
+                            <label for="name" class="input-group-text"> Nombre </label>
+                            <input class="form-control" type="text" name="name" id="name" placeholder="Ejemplo: Walter"  
+                            value="{{persona.name}}" autofocus required >
+                        </div>
+
+                        <div class="input-group mt-2">
+                            <label for="lastname" class="input-group-text"> Marca </label>
+                            <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Ejemplo: Alarcon" 
+                            value="{{persona.lastname}}" required >
+                        </div>
+
+                        <div class="input-group mt-2">
+                            <label for="age" class="input-group-text"> Cantidad </label>
+                            <input class="form-control" type="number" name="age" id="age" placeholder="Ejemplo: 20" 
+                            value="{{persona.age}}" required >
+                        </div>
+                        <div class="input-group mt-2">
+                            <label for="observacion" class="input-group-text"> Observacion </label>
+                            <input class="form-control" type="text" name="observacion" id="observacion" placeholder="Ejemplo: ....." 
+                            value="{{persona.observacion}}" required >
+                        </div>
+
+                        <div class="form-group mt-4 d-grid gap-2">
+                            <button class="btn btn-success"> Crear </button>
+                        </div>
+                    </div>   
+                        </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
