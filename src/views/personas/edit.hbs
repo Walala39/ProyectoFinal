@@ -1,38 +1,47 @@
+<br>        </br>
+<br>        </br>
 <div class="container p-4">
     <div class="row">
         <div class="col-md-4 mx-auto">
             <div class="card text-center">
                 <div class="card-header">
-                    <h3 class="text-uppercase"> Editar Persona</h3>
+                    <h3 class="text-uppercase"> Editar Juguete</h3>
                 </div>
                     <div class="card-body">
                         <form action="/edit/{{persona.id}}" method="post">
 
                         <div class="input-group mt-2">
                             <label for="name" class="input-group-text"> Nombre </label>
-                            <input class="form-control" type="text" name="name" id="name" placeholder="Ejemplo: Walter"  
+                            <input class="form-control" type="text" name="name" id="name" placeholder="Nombre de Juguete"  
                             value="{{persona.name}}" autofocus required >
                         </div>
 
                         <div class="input-group mt-2">
                             <label for="lastname" class="input-group-text"> Marca </label>
-                            <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Ejemplo: Alarcon" 
+                            <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Marca de Juguete" 
                             value="{{persona.lastname}}" required >
                         </div>
 
                         <div class="input-group mt-2">
                             <label for="age" class="input-group-text"> Cantidad </label>
-                            <input class="form-control" type="number" name="age" id="age" placeholder="Ejemplo: 20" 
+                            <input class="form-control" type="number" name="age" id="age" placeholder="Cantidad en Stock" 
                             value="{{persona.age}}" required >
                         </div>
                         <div class="input-group mt-2">
                             <label for="observacion" class="input-group-text"> Observacion </label>
-                            <input class="form-control" type="text" name="observacion" id="observacion" placeholder="Ejemplo: ....." 
+                            <input class="form-control" type="text" name="observacion" id="observacion" placeholder="Pon Una Observacion"
                             value="{{persona.observacion}}" required >
                         </div>
+                        <div class="input-group mt-2">
+                            <label for="imagen" class="input-group-text">Imagen</label>
+                            <input class="form-control" type="file" name="file"
+                            value="{{persona.imagen}}" required >
+
+                        </div>
+
 
                         <div class="form-group mt-4 d-grid gap-2">
-                            <button class="btn btn-success"> Crear </button>
+                            <button class="btn btn-success"> Editar </button>
                         </div>
                     </div>   
                         </form>                    
